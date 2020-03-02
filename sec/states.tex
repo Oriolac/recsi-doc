@@ -1,0 +1,7 @@
+\begin{document}
+As it is designed a state machine pattern, there are two states, which are represented also by the protocol RECSI:
+\begin{enumerate}
+	\item KeyEstablishment. Produces the secret key of every smart meter and the private key of the substation executing the Busom protocol.
+	\item ConsumptionTransmission. After the key is established, every smart meter of the neighbourhood reads its consumption and send its cipher as the substation receive all the ciphered messages and decipher using an instance of LogarithmAlgorithm class.
+\end{enumerate}
+\end{document}
