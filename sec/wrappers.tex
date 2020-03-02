@@ -1,0 +1,45 @@
+% !TeX spellcheck = en_GB
+\begin{document}
+	% Introduction to wrappers and algorithms [references]
+	% Why made this three classes.
+	% Problem of Pollard's Lambda and Hashed Force
+	RECSI and Busom cryptosystems need to solve a some discrete logarithm
+	problem, so a module for algorithms was made at the library.
+	It was used three algorithms to test RECSI. At first it was used Pollard's
+	Lambda, but a bug was found out that made it sometimes fail. Even though, 
+	 the same point, when used in unit testing, worked flawlessly. To advance the
+	implementation, a Brute Force algorithm was created and tested it in RECSI.
+	It worked, so we started to gather other methods to solve the problem.\\
+	\\
+	The third algorithm was a mesmerized brute force. As the cost in memory was
+	doable -$2^{20}$ instances are proximately 1 GB in memory-, every instance was saved. At this point, the bug that was in Pollard's
+	Lambda was found to be that the hashcode and equals methods were not consistent, so both methods were remade in all CigLib. It was made an improved version that does not mesmerize all instances, instead it mesmerize every $times$ instances.
+	\subsubsection{Times}
+	
+	%\subsubsection{Pollard's Lambda}
+	% Costs by example
+	
+	%\subsubsection{Brute Force}
+	% Costs by example
+	%\subsubsection{Hashed Force}
+	% Costs by example
+	\begin{table}[h]
+		\centering
+	\begin{tabular}{l|rrrr}
+		Algorithm &  Mean (ms) & Median (ms) & Max (ms) &Min (ms)\\ 
+		\hline 
+		Pollard's Lambda&112.21&99.5&205&92  \\
+		Brute Force &1576.36 &1508.0 &716 &2380\\
+		Hashed &18.29 &17.5 &12 &32
+		
+
+	\end{tabular}
+	\caption{Time comparison of all algorithms}
+	\label{wrap:time}
+	\end{table}
+
+	% Conclusion why is the best for us.
+	As seen in the table \ref{wrap:time}
+	the best algorithm is observed to be the mesmerized brute force.
+	The cost of the algorithm is only paid when the substation is set up, so it works with this use case of solving the discrete logarithm.
+\end{document}
