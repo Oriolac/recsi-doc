@@ -1,6 +1,6 @@
 % !TeX spellcheck = en_GB
-\usepackage{subfiles}
 \documentclass{article}
+\usepackage{subfiles}
 \title{Implementation of smart metering system in Java}
 \author{Oriol Alàs, Sergi Simón}
 
@@ -15,14 +15,18 @@
    % CigLib
    \section{Design}
    % UML
+   \subfile{sec/design.tex}
    \subsection{States}
+   \subfile{sec/states.tex}
    % KE
    % CT
-   \subsection{Connexion}
+   \subsection{Connection}
+   \subfile{sec/connection.tex}
    % Wrapper for sockets
    % Datagrams
    % Factory of datagrams
    \subsection{Consumption Readers}
+   \subfile{sec/consumptionreaders.tex}
    % Abstract to make tests
    \subsection{Costs of Wrappers}
    % Introduction to wrappers and algorithms [references]
