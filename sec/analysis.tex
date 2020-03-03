@@ -1,0 +1,12 @@
+% !TeX spellcheck = en_GB
+\begin{document}
+   As the purpose of the implementation was to know if the cryptosystem was
+   good for production, a test of the cost in time for sending packages was
+   needed. This results, given in the \ref{ana:res}, made it clear that
+   the system is capable of holding at least 128 smart meters. Even though,
+   there are still some points that the test fails to show.\\
+   \\
+   The first point is the problems in the connectivity of the aggregated system, as the test were done in a single machine, using the interface of localhost.
+   The second point refers to the number of meters and the problem of simulating the infrastructure in a single machine. As the machine used for testing only has available two cores for processing, when using it for 129 threads for simulating (128 smart meters and 1 substation), the time of switching between process skyrockets.
+   
+\end{document}
