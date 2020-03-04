@@ -1,6 +1,8 @@
 % !TeX spellcheck = en_GB
 \documentclass{article}
 \usepackage{subfiles}
+\usepackage[english]{babel}
+\usepackage[nottoc]{tocbibind}
 \title{Implementation of smart metering system in Java}
 \author{Oriol Alàs, Sergi Simón}
 
@@ -49,9 +51,12 @@
    % Compare the mean of both algorithms
    \section{Conclusion}
    % ---
+   \subfile{sec/conclusions.tex}
    \section{Acknowledgements}
    % dineritos del projecte
-   \section{References}
+   \subfile{sec/ack.tex}
+   \bibliography{document}
+   \bibliographystyle{unsrt}
    % Busom
    % RECSI
 \end{document}
