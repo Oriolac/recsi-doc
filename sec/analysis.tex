@@ -6,8 +6,23 @@
    needed. This results, given in the \ref{ana:res}, made it clear that
    the system is capable of holding at least 128 smart meters. Even though,
    there are still some points that the test fails to show.\\
-   The experimental cost analysis was done executing a computer with an \textbf{XXXXXX} processor running at \textbf{XXXXXX} GHz with \textbf{XXXXXXX} GB of RAM, using two cores.\\
+   The experimental cost analysis was done executing a computer with an \textbf{XXXXXX} processor running at \textbf{XXXXXX} GHz with \textbf{XXXXXXX} GB of RAM, using two cores.\\ %TODO: HEY MUST DO THE SPECIFICATIONS
    The first point is the problems in the connectivity of the aggregated system, as the test were done in a single machine, using the interface of localhost.
    The second point refers to the number of meters and the problem of simulating the infrastructure in a single machine. As the computer used for testing only has available two cores for processing, when using 129 threads for simulating (128 smart meters and 1 substation), the time of switching between process skyrockets.
    
+   \begin{table}
+   		\centering
+   		\begin{tabular}{l|rr}
+   			Meters & SSt-BS (ms) & SSt-CT (ms) \\ \hline
+   			2      &     27.9333 &     19.5500 \\
+   			4      &     39.7833 &     27.1500 \\
+   			8      &        56.0 &     41.3667 \\
+   			16     &     88.6333 &     58.2667 \\
+   			32     &    156.9167 &     99.3500 \\
+   			64     &    283.4833 &    206.2667 \\
+   			128    &    485.8333 &      265.70
+   		\end{tabular}
+   		\caption{Mean for receiving the data from smart meters.}
+   		\label{ana:tab1}
+   \end{table}
 \end{document}
