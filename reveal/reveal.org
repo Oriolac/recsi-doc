@@ -1,23 +1,26 @@
 #+TITLE: RECSI
-#+author: Oriol Alàs Cercós, Sergi Simón Balcells
+#+author: Oriol Alàs, Sergi Simón
 
 #+REVEAL_INIT_OPTIONS: slideNumber:"c/t"
 #+OPTIONS: toc:nil
 
 * Introduction
-
+#+begin_comment
+Oriol
+#+end_comment
 #+caption: Smart-meters connect to a station.
 [[file:img/smartmeter.png]]
 
 #+begin_comment
-Put some images, maybe?
-
 - Selling personal information.
 - Can be used for other purposes than predicting the energy
   consumption in a day.
 #+end_comment
 
 * Busom Solution
+#+begin_comment
+Sergi fins decipher, Oriol the problem.
+#+end_comment
 ** Setup
 - Private Key :: $x_i$
 - Public key :: $y_i = g^x_i$
@@ -47,6 +50,9 @@ Explain that
   discarding every other message
 #+end_comment
 * RECSI
+#+begin_comment
+Oriol Setup i KE. Sergi CT
+#+end_comment
 ** Setup
 #+begin_comment
 - Elliptic Curve (p192) with the generator.
@@ -80,3 +86,16 @@ Where:
 Explain that the discrete logarithm is solvable because
 the message is always small (adding all of them can't be higher than 10000).
 #+end_comment
+
+* Summary
+#+begin_comment
+- Busom solution and problem
+- RECSI and how it uses Busom for a Key set up.
+
+The implementation was done in Java. It can be found at this repositories.
+#+end_comment
+* Implementation
+- [[https://github.com/Oriolac/cig-lib][Criptography library]]
+- [[https://github.com/Oriolac/smart-metering-simulation][Smart Meter simulation]]
+
+* Thanks for your attention
