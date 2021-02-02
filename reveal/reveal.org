@@ -1,0 +1,82 @@
+#+TITLE: RECSI
+#+author: Oriol Alàs Cercós, Sergi Simón Balcells
+
+#+REVEAL_INIT_OPTIONS: slideNumber:"c/t"
+#+OPTIONS: toc:nil
+
+* Introduction
+
+#+caption: Smart-meters connect to a station.
+[[file:img/smartmeter.png]]
+
+#+begin_comment
+Put some images, maybe?
+
+- Selling personal information.
+- Can be used for other purposes than predicting the energy
+  consumption in a day.
+#+end_comment
+
+* Busom Solution
+** Setup
+- Private Key :: $x_i$
+- Public key :: $y_i = g^x_i$
+- Group Key :: $y = \Pi_{i=1}^n y_i$
+
+#+begin_comment
+Server checks that everyone is who say it is.
+#+end_comment
+** Cipher and Decipher
+1. Smart-meters send an ElGamal encryption
+   \[ E_y(g^{m_i + z_i}) = (c_i, d_i) \]
+2. The system computes and sends $c$ to the users.
+   \[ C = (\Pi _{i=1}^{n} c_i, \Pi _{i=1}^{n} d_i) = (g^r, g^{m + z} * y^{r}) = (c, d) \]
+#+REVEAL: split
+3. [@3] Every smart-meter computes and sends $T_i$
+   \[ T_i = c^{x_i} g^{z_i} \]
+4. The system computes
+   \[ D = d  (\Pi _{i=1}^{n} T_i)^{-1} = (g^{m+z}  y^r)  (g^{z}  y^r)^{-1} = g^m \]
+5. Then we solve the discrete logarithm
+   \[ m = \log_g D \]
+
+** Decipher
+** The problem with Busom
+#+begin_comment
+Explain that
+- An attacker can get every two rounds a message from one person,
+  discarding every other message
+#+end_comment
+* RECSI
+** Setup
+#+begin_comment
+- Elliptic Curve (p192) with the generator.
+- Hash function (SHA-256)
+#+end_comment
+** Key Establishment
+
+\[ s'_0 = \sum_{i=1}^{N} {s_i} = -s_0 \; (mod \; p) \]
+
+#+begin_comment
+- Use Busom as it can not be exploited to get personal information.
+#+end_comment
+** Consumption Transmission
+*** Cipher
+\[ C_i =  m_i P + s_i H(t) \]
+
+*** Decipher
+\[ C =  \sum_{i=1}^{N} C_i = m P + \sum_{i=1}^{n} s_i  * H(t) \]
+
+\[ D = C + s_o H(t) = m P + s H(t) = m P \]
+
+Where:
+\[ s = s_0 + \sum_{i=1}^{N} s_i = 0 \]
+
+*** Discrete Logarithm
+- Brute Force
+- Pollard's Lambda
+- Cached Brute Force
+
+#+begin_comment
+Explain that the discrete logarithm is solvable because
+the message is always small (adding all of them can't be higher than 10000).
+#+end_comment

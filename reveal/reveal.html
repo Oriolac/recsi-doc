@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>RECSI</title>
+<meta name="author" content="Oriol Alàs Cercós, Sergi Simón Balcells"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="/home/sergi/.emacs.d/.local/straight/build-27.1/revealjs/dist/reveal.css"/>
+
+<link rel="stylesheet" href="/home/sergi/.emacs.d/.local/straight/build-27.1/revealjs/dist/theme/black.css" id="theme"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">RECSI</h1><h2 class="author">Oriol Alàs Cercós, Sergi Simón Balcells</h2><p class="date">Created: 2021-02-02 Tue 19:47</p>
+</section>
+
+<section>
+<section id="slide-1">
+<h2 id="1"><span class="section-number-2">1</span> Introduction</h2>
+
+<div id="org8e4691e" class="figure">
+<p><img src="img/smartmeter.png" alt="smartmeter.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Smart-meters connect to a station.</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-2">
+<h2 id="2"><span class="section-number-2">2</span> Busom Solution</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+</section>
+<section id="slide-2-1">
+<h3 id="2-1"><span class="section-number-3">2.1</span> Setup</h3>
+<dl>
+<dt>Private Key</dt><dd>\(x_i\)</dd>
+<dt>Public key</dt><dd>\(y_i = g^x_i\)</dd>
+<dt>Group Key</dt><dd>\(y = \Pi_{i=1}^n y_i\)</dd>
+
+</dl>
+</section>
+<section id="slide-2-2">
+<h3 id="2-2"><span class="section-number-3">2.2</span> Cipher and Decipher</h3>
+<ol>
+<li>Smart-meters send an ElGamal encryption
+\[ E_y(g^{m_i + z_i}) = (c_i, d_i) \]</li>
+<li>The system computes and sends \(c\) to the users.
+\[ C = (\Pi _{i=1}^{n} c_i, \Pi _{i=1}^{n} d_i) = (g^r, g^{m + z} * y^{r}) = (c, d) \]</li>
+
+</ol>
+</section>
+<section>
+<ol>
+<li value="3">Every smart-meter computes and sends \(T_i\)
+\[ T_i = c^{x_i} g^{z_i} \]</li>
+<li>The system computes
+\[ D = d  (\Pi _{i=1}^{n} T_i)^{-1} = (g^{m+z}  y^r)  (g^{z}  y^r)^{-1} = g^m \]</li>
+<li>Then we solve the discrete logarithm
+\[ m = \log_g D \]</li>
+
+</ol>
+
+</section>
+<section id="slide-2-3">
+<h3 id="2-3"><span class="section-number-3">2.3</span> Decipher</h3>
+</section>
+<section id="slide-2-4">
+<h3 id="2-4"><span class="section-number-3">2.4</span> The problem with Busom</h3>
+</section>
+</section>
+<section>
+<section id="slide-3">
+<h2 id="3"><span class="section-number-2">3</span> RECSI</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+</section>
+<section id="slide-3-1">
+<h3 id="3-1"><span class="section-number-3">3.1</span> Setup</h3>
+</section>
+<section id="slide-3-2">
+<h3 id="3-2"><span class="section-number-3">3.2</span> Key Establishment</h3>
+<p>
+\[ s'_0 = \sum_{i=1}^{N} {s_i} = -s_0 \; (mod \; p) \]
+</p>
+</section>
+<section id="slide-3-3">
+<h3 id="3-3"><span class="section-number-3">3.3</span> Consumption Transmission</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+</section>
+<section id="slide-3-3-1">
+<h4 id="3-3-1"><span class="section-number-4">3.3.1</span> Cipher</h4>
+<p>
+\[ C_i =  m_i P + s_i H(t) \]
+</p>
+
+</section>
+<section id="slide-3-3-2">
+<h4 id="3-3-2"><span class="section-number-4">3.3.2</span> Decipher</h4>
+<p>
+\[ C =  \sum_{i=1}^{N} C_i = m P + \sum_{i=1}^{n} s_i  * H(t) \]
+</p>
+
+<p>
+\[ D = C + s_o H(t) = m P + s H(t) = m P \]
+</p>
+
+<p>
+Where:
+\[ s = s_0 + \sum_{i=1}^{N} s_i = 0 \]
+</p>
+
+</section>
+<section id="slide-3-3-3">
+<h4 id="3-3-3"><span class="section-number-4">3.3.3</span> Discrete Logarithm</h4>
+<ul>
+<li>Brute Force</li>
+<li>Pollard&rsquo;s Lambda</li>
+<li>Cached Brute Force</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="/home/sergi/.emacs.d/.local/straight/build-27.1/revealjs/dist/reveal.js"></script>
+<script src="/home/sergi/.emacs.d/.local/straight/build-27.1/revealjs/plugin/markdown/markdown.js"></script>
+<script src="/home/sergi/.emacs.d/.local/straight/build-27.1/revealjs/plugin/notes/notes.js"></script>
+<script src="/home/sergi/.emacs.d/.local/straight/build-27.1/revealjs/plugin/search/search.js"></script>
+<script src="/home/sergi/.emacs.d/.local/straight/build-27.1/revealjs/plugin/zoom/zoom.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+
+overview: true,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>
