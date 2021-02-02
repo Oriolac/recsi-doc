@@ -33,16 +33,17 @@ Server checks that everyone is who say it is.
 1. Smart-meters send an ElGamal encryption
    \[ E_y(g^{m_i + z_i}) = (c_i, d_i) \]
 2. The system computes and sends $c$ to the users.
-   \[ C = (\Pi _{i=1}^{n} c_i, \Pi _{i=1}^{n} d_i) = (g^r, g^{m + z} * y^{r}) = (c, d) \]
+   \[ C = (\Pi _{i=1}^{n} c_i, \Pi _{i=1}^{n} d_i) \]
+   \[  = (g^r, g^{m + z} * y^{r}) = (c, d) \]
 #+REVEAL: split
 3. [@3] Every smart-meter computes and sends $T_i$
    \[ T_i = c^{x_i} g^{z_i} \]
 4. The system computes
    \[ D = d  (\Pi _{i=1}^{n} T_i)^{-1} = (g^{m+z}  y^r)  (g^{z}  y^r)^{-1} = g^m \]
-5. Then we solve the discrete logarithm
+#+REVEAL: split
+5. [@5] Finally we solve the discrete logarithm
    \[ m = \log_g D \]
 
-** Decipher
 ** The problem with Busom
 #+begin_comment
 Explain that
@@ -72,6 +73,8 @@ Oriol Setup i KE. Sergi CT
 *** Decipher
 \[ C =  \sum_{i=1}^{N} C_i = m P + \sum_{i=1}^{n} s_i  * H(t) \]
 
+
+#+REVEAL: split
 \[ D = C + s_o H(t) = m P + s H(t) = m P \]
 
 Where:
@@ -100,4 +103,3 @@ The implementation was done in Java. It can be found at this repositories.
 
 * Thanks for your attention
 - N. Busom, R. Petrlic, . Sebé, C. Sorge, and M. Valls: “Efficient smart metering based on homomorphic encryption”, Computer Communications, vol. 82, pp. 95–101, 2016.
--
