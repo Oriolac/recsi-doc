@@ -99,3 +99,5 @@ The implementation was done in Java. It can be found at this repositories.
 - [[https://github.com/Oriolac/smart-metering-simulation][Smart Meter simulation]]
 
 * Thanks for your attention
+- N. Busom, R. Petrlic, . Sebé, C. Sorge, and M. Valls: “Efficient smart metering based on homomorphic encryption”, Computer Communications, vol. 82, pp. 95–101, 2016.
+-
